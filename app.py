@@ -6,7 +6,7 @@ import torch
 import streamlit as st
 import os
 from re import A
-import plotly.graph_objects as go 
+# import plotly.graph_objects as go 
 import numpy as np
 import pandas as pd
 from PIL import Image
@@ -149,61 +149,62 @@ if __name__ == '__main__':
     ########################################################
     # gauge graph for AQI values
 
-    def aqi_graph(value):
+    # def aqi_graph(value):
     #   print(graph_color)
-        color = ''
-        condn = ''
-        if (aqi_val>=0 and aqi_val<=50):
-          color = 'Green'
-          condn = 'Good'
-        elif (aqi_val>=51 and aqi_val<=100):
-          color = '#90EE90'
-          condn = 'Satisfactory'
-        elif (aqi_val>=101 and aqi_val<=200):
-          color = 'yellow'
-          condn = 'Moderate'
+        # color = ''
+        # condn = ''
+        # if (aqi_val>=0 and aqi_val<=50):
+        #   color = 'Green'
+        #   condn = 'Good'
+        # elif (aqi_val>=51 and aqi_val<=100):
+        #   color = '#90EE90'
+        #   condn = 'Satisfactory'
+        # elif (aqi_val>=101 and aqi_val<=200):
+        #   color = 'yellow'
+        #   condn = 'Moderate'
 
-        elif (aqi_val>=201 and aqi_val<=300):
-          color = 'orange'
-          condn = 'Poor'
-        elif (aqi_val>=301 and aqi_val<=400):
-          condn = 'Very Poor'
-          color = 'red'
-        elif (aqi_val>=401 and aqi_val<=500):
-          color = '#8B0000' # hex code for dark red
-          condn = 'Severe'
-        elif(aqi_val>500):
-          color = '#8B0000' # hex code for dark red
-          condn = 'Severe'
-        else:
-          color = 'green'
-          condn = 'Good'
-        fig = go.Figure(go.Indicator(
-          value = value,
-          mode = "gauge+number",
-          domain = {'x': [0, 1], 'y': [0, 1]},
-          title = {'text': "AQI is {}".format(condn), 'font': {'size': 26}},
-          gauge = {
-              'axis': {'range': [None, 500]},
-              'bar': {'color': color},# this is the bar color
-              'bgcolor': "white",
-              'borderwidth': 2,
-              'bordercolor': "gray",
-              'threshold': {
-                  'line': {'color': "red", 'width': 4},
-                  'thickness': 0.75,
-                  'value': 401}}))
+        # elif (aqi_val>=201 and aqi_val<=300):
+        #   color = 'orange'
+        #   condn = 'Poor'
+        # elif (aqi_val>=301 and aqi_val<=400):
+        #   condn = 'Very Poor'
+        #   color = 'red'
+        # elif (aqi_val>=401 and aqi_val<=500):
+        #   color = '#8B0000' # hex code for dark red
+        #   condn = 'Severe'
+        # elif(aqi_val>500):
+        #   color = '#8B0000' # hex code for dark red
+        #   condn = 'Severe'
+        # else:
+        #   color = 'green'
+        #   condn = 'Good'
 
-        # fig.show()
-        return fig
+        # fig = go.Figure(go.Indicator(
+        #   value = value,
+        #   mode = "gauge+number",
+        #   domain = {'x': [0, 1], 'y': [0, 1]},
+        #   title = {'text': "AQI is {}".format(condn), 'font': {'size': 26}},
+        #   gauge = {
+        #       'axis': {'range': [None, 500]},
+        #       'bar': {'color': color},# this is the bar color
+        #       'bgcolor': "white",
+        #       'borderwidth': 2,
+        #       'bordercolor': "gray",
+        #       'threshold': {
+        #           'line': {'color': "red", 'width': 4},
+        #           'thickness': 0.75,
+        #           'value': 401}}))
+
+        # # fig.show()
+        # return fig
 
     # accessing the function gauge_graph 
     # df.style.set_properties(**{"background-color": "black", "color": "lawngreen"})
     st.dataframe(filter_dataframe(df).style.set_properties(**{"background-color": "black", "color": "lawngreen"}),width=800)
-    with st.sidebar:
+    # with st.sidebar:
 
-        st.plotly_chart(aqi_graph(aqi_val), use_container_width=True,sharing="streamlit", theme="streamlit")
-        st.sidebar.markdown('---')
+        # st.plotly_chart(aqi_graph(aqi_val), use_container_width=True,sharing="streamlit", theme="streamlit")
+        # st.sidebar.markdown('---')
 
 
 ################################################################################################################
